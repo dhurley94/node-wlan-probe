@@ -86,12 +86,14 @@ async function wifiScan() {
 }
 
 /**
- * Updates the database every 30000ms with latest available data
+ * Updates database with latest hotspots
  */
 wifiScan().catch((err => { console.error(err, 'Critical Error')}));
 
+// testing reaver
 const reaver = spawn('reaver', '-i', device, '-b', mongoose.get(Hotspot.collection.findById(id, {name: 'Microwave802.11'}, {select: 'bssid'}, function(err, callback) { console.log(`error: ${err} \n callback: ${callback}`)})));
 
 console.log(reaver);
 
+// DC from mongo
 mongoose.disconnect();
